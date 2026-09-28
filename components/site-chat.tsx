@@ -12,6 +12,7 @@ type Message = {
   text: string;
   suggestContact?: boolean;
   suggestions?: string[];
+  topicId?: string;
 };
 
 function nextId() {
@@ -25,6 +26,7 @@ function botMessage(reply: ChatReply): Message {
     text: reply.answer,
     suggestContact: reply.suggestContact,
     suggestions: reply.suggestions,
+    topicId: reply.topicId,
   };
 }
 
@@ -61,6 +63,7 @@ export function SiteChat() {
   const [greeting, setGreeting] = useState(true);
   const [input, setInput] = useState("");
   const [pending, setPending] = useState(false);
+  const lastTopicId = useRef<string | undefined>(chatWelcome.topicId);
   const [messages, setMessages] = useState<Message[]>(() => [botMessage(chatWelcome)]);
 
   useEffect(() => {
@@ -88,9 +91,14 @@ export function SiteChat() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
-  function replyTo(text: string) {
+  async function replyTo(text: string) {
     const trimmed = text.trim();
     if (!trimmed || pending) return;
+
+    const history = messages.map((message) => ({
+      role: message.role === "bot" ? ("model" as const) : ("user" as const),
+      text: message.text,
+    }));
 
     setInput("");
     setMessages((current) => [
@@ -99,15 +107,32 @@ export function SiteChat() {
     ]);
     setPending(true);
 
-    const reducedMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const delay = reducedMotion ? 0 : 450;
-
-    window.setTimeout(() => {
-      setMessages((current) => [...current, botMessage(answerCompanyQuestion(trimmed))]);
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: trimmed, history }),
+      });
+      const payload = (await response.json()) as ChatReply & { error?: string };
+      const reply: ChatReply = payload.answer
+        ? {
+            answer: payload.answer,
+            suggestContact: Boolean(payload.suggestContact),
+            suggestions: payload.suggestions ?? [],
+            topicId: payload.topicId,
+          }
+        : answerCompanyQuestion(trimmed, { lastTopicId: lastTopicId.current });
+      lastTopicId.current = reply.topicId ?? lastTopicId.current;
+      setMessages((current) => [...current, botMessage(reply)]);
+    } catch {
+      const reply = answerCompanyQuestion(trimmed, {
+        lastTopicId: lastTopicId.current,
+      });
+      lastTopicId.current = reply.topicId ?? lastTopicId.current;
+      setMessages((current) => [...current, botMessage(reply)]);
+    } finally {
       setPending(false);
-    }, delay);
+    }
   }
 
   function handleSubmit(event: FormEvent) {
@@ -164,7 +189,11 @@ export function SiteChat() {
                       : "rounded-bl-md bg-bg-white text-ink"
                   }`}
                 >
-                  <p>{message.text}</p>
+                  <div className="space-y-2">
+                    {message.text.split("\n\n").map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
                   {message.role === "bot" && message.suggestContact ? (
                     <button
                       type="button"
