@@ -1,4 +1,3 @@
-import { Cases } from "@/components/cases";
 import { ContactCta } from "@/components/contact-cta";
 import { ContactProvider } from "@/components/contact-dialog";
 import { Hero } from "@/components/hero";
@@ -16,7 +15,6 @@ export default function Home() {
         <SiteHeader />
         <main id="conteudo">
           <Hero />
-          <Cases />
           <Services />
           <WhyLua />
           <Process />

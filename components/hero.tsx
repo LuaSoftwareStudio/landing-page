@@ -29,10 +29,10 @@ export function Hero() {
               <CtaArrow />
             </ContactButton>
             <a
-              href="#casos"
+              href="#servicos"
               className="group/cta inline-flex min-h-11 items-center justify-center gap-2 text-sm text-white/90 transition-opacity duration-200 hover:opacity-100"
             >
-              Ver nossos trabalhos
+              Ver nossos serviços
               <CtaArrow />
             </a>
           </div>
