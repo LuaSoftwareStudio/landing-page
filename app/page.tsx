@@ -11,9 +11,9 @@ import { WhyLua } from "@/components/why-lua";
 export default function Home() {
   return (
     <ContactProvider>
-      <div id="topo" className="flex min-h-full flex-col">
+      <div id="topo" className="flex min-h-full w-full min-w-0 flex-col">
         <SiteHeader />
-        <main id="conteudo">
+        <main id="conteudo" className="min-w-0">
           <Hero />
           <Services />
           <WhyLua />

@@ -37,7 +37,7 @@ export function Services() {
           {services.map((service) => (
             <article
               key={service.number}
-              className="stagger-card rounded-[28px] border border-transparent bg-card px-7 py-8 text-white motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/10 sm:px-8 sm:py-9"
+              className="stagger-card min-w-0 rounded-[28px] border border-transparent bg-card px-5 py-8 text-white motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-white/10 sm:px-8 sm:py-9"
             >
               <p className="text-[2rem] font-medium leading-none tracking-[-0.04em] text-white/80">
                 {service.number}

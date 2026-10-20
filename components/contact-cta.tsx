@@ -7,8 +7,8 @@ export function ContactCta() {
       className="dark-section bg-hero text-white"
       aria-labelledby="contato-title"
     >
-      <div className="section-shell section-space grid items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-16">
-        <div className="max-w-xl">
+      <div className="section-shell section-space grid min-w-0 items-start gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-16">
+        <div className="min-w-0 max-w-xl">
           <p className="section-kicker text-white/55">Contato</p>
           <h2
             id="contato-title"
@@ -22,7 +22,7 @@ export function ContactCta() {
           </p>
         </div>
 
-        <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-5 sm:p-8">
+        <div className="min-w-0 rounded-[28px] border border-white/10 bg-white/[0.04] p-5 sm:p-8">
           <h3 className="text-[1.35rem] font-medium tracking-[-0.03em]">
             O que você quer construir?
           </h3>

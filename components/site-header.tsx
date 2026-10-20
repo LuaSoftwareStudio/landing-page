@@ -39,7 +39,7 @@ export function SiteHeader() {
           : "border-transparent bg-bg-white/80"
       }`}
     >
-      <div className="section-shell flex min-h-[4.5rem] items-center justify-between gap-2 sm:min-h-[5.5rem] sm:gap-4">
+      <div className="section-shell flex min-h-[4.5rem] min-w-0 items-center justify-between gap-2 sm:min-h-[5.5rem] sm:gap-4">
         <SiteLogo variant="on-light" size="header" priority />
 
         <nav
@@ -57,7 +57,7 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <ContactButton className="group/cta inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full bg-ink px-3 text-sm text-white transition-opacity duration-200 hover:opacity-80 sm:gap-2 sm:px-5">
             <span className="md:hidden">Começar</span>
             <span className="hidden md:inline">Começar um projeto</span>

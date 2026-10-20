@@ -141,13 +141,14 @@ export function SiteChat() {
   }
 
   return (
-    <div className="pointer-events-none fixed right-4 bottom-4 z-80 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-80 flex justify-end px-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6">
+      <div className="flex w-full max-w-90 min-w-0 flex-col items-end gap-3">
       {open ? (
         <section
           role="dialog"
           aria-modal="false"
           aria-labelledby={titleId}
-          className="pointer-events-auto flex h-[min(32rem,calc(100dvh-7.5rem))] w-[min(100vw-2rem,22.5rem)] flex-col overflow-hidden rounded-[28px] border border-ink/10 bg-bg shadow-[0_20px_50px_rgba(23,23,23,0.18)]"
+          className="pointer-events-auto flex h-[min(32rem,calc(100dvh-7.5rem-env(safe-area-inset-bottom)))] w-full min-w-0 flex-col overflow-hidden rounded-[28px] border border-ink/10 bg-bg shadow-[0_20px_50px_rgba(23,23,23,0.18)]"
         >
           <header className="flex items-center justify-between gap-3 bg-hero px-4 py-3 text-white">
             <div className="flex min-w-0 items-center gap-3">
@@ -183,7 +184,7 @@ export function SiteChat() {
                 className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-6 ${
+                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-6 wrap-break-word ${
                     message.role === "user"
                       ? "rounded-br-md bg-ink text-white"
                       : "rounded-bl-md bg-bg-white text-ink"
@@ -257,7 +258,7 @@ export function SiteChat() {
 
       <div className="flex flex-col items-end gap-2">
         {!open && greeting ? (
-          <div className="pointer-events-auto relative mr-2 max-w-[16.5rem]">
+          <div className="pointer-events-auto relative mr-2 max-w-full">
             <div className="flex items-center gap-2 rounded-2xl border border-ink bg-white px-3 py-2 text-sm text-ink shadow-[0_8px_24px_rgba(23,23,23,0.12)]">
               <button
                 type="button"
@@ -308,6 +309,7 @@ export function SiteChat() {
             ) : null}
           </span>
         </button>
+      </div>
       </div>
     </div>
   );

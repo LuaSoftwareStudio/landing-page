@@ -111,8 +111,8 @@ export function ContactForm({ variant = "on-dark", onSent }: ContactFormProps) {
   }
 
   const fieldClass = dark
-    ? "min-h-11 w-full rounded-xl border border-white/15 bg-white/8 px-3.5 text-base text-white outline-none transition-colors duration-200 placeholder:text-white/35 focus:border-white"
-    : "min-h-11 w-full rounded-xl border border-ink/15 bg-bg-white px-3.5 text-base text-ink outline-none transition-colors duration-200 placeholder:text-ink/35 focus:border-ink";
+    ? "min-h-11 w-full min-w-0 max-w-full rounded-xl border border-white/15 bg-white/8 px-3.5 text-base text-white outline-none transition-colors duration-200 placeholder:text-white/35 focus:border-white"
+    : "min-h-11 w-full min-w-0 max-w-full rounded-xl border border-ink/15 bg-bg-white px-3.5 text-base text-ink outline-none transition-colors duration-200 placeholder:text-ink/35 focus:border-ink";
   const labelClass = dark
     ? "mb-2 block text-[13px] font-medium leading-4 text-white"
     : "mb-2 block text-[13px] font-medium leading-4 text-ink";
@@ -157,7 +157,7 @@ export function ContactForm({ variant = "on-dark", onSent }: ContactFormProps) {
         </div>
       ) : null}
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid min-w-0 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor={`${formId}-name`} className={labelClass}>
             Nome

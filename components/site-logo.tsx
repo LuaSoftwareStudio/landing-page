@@ -10,7 +10,7 @@ const sizes = {
   header: {
     width: 148,
     height: 55,
-    className: "h-9 w-auto max-w-[118px] object-contain object-left sm:h-11 sm:max-w-[148px]",
+    className: "h-8 w-auto max-w-[5.75rem] object-contain object-left sm:h-11 sm:max-w-[148px]",
     sizes: "148px",
   },
   footer: {
@@ -37,7 +37,7 @@ export function SiteLogo({
   return (
     <a
       href="#topo"
-      className="inline-flex min-h-11 items-center rounded-sm"
+      className="inline-flex min-h-11 min-w-0 shrink items-center rounded-sm"
       aria-label={`${site.name}, ir para o início`}
     >
       <Image
