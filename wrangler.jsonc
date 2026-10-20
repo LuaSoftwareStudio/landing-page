@@ -9,5 +9,8 @@
   "services": [
     { "binding": "WORKER_SELF_REFERENCE", "service": "landing-page" }
   ],
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  "previews": {
+    "images": { "binding": "IMAGES" }
+  }
 }
