@@ -37,7 +37,7 @@ export function Process() {
           Descobrir, definir, construir e evoluir. A mesma lógica de um produto
           que continua se transformando depois do lançamento.
         </p>
-        <ol className="relative mt-14 grid gap-10 lg:grid-cols-4 lg:gap-0">
+        <ol className="relative mt-14 grid min-w-0 gap-10 lg:grid-cols-4 lg:gap-0">
           <span
             className="pointer-events-none absolute top-[1.15rem] right-[8%] left-[8%] hidden h-px bg-ink/10 lg:block"
             aria-hidden="true"

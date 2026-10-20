@@ -16,7 +16,7 @@ export function ProductPreview({
 }) {
   return (
     <div
-      className={`flex h-full min-h-[14.5rem] flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[#111] shadow-[0_24px_60px_rgba(0,0,0,0.28)] ${className ?? ""}`}
+      className={`flex h-full min-h-[14.5rem] w-full min-w-0 max-w-full flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[#111] shadow-[0_24px_60px_rgba(0,0,0,0.28)] ${className ?? ""}`}
       aria-hidden="true"
     >
       <div className="flex shrink-0 items-center gap-2 border-b border-white/8 px-4 py-3">
@@ -34,13 +34,13 @@ export function ProductPreview({
           <span className="h-8 shrink-0 rounded-lg bg-white/5" />
           <span className="mt-auto h-8 shrink-0 rounded-lg bg-white/8" />
         </div>
-        <div className="flex min-h-0 flex-col gap-4">
-          <div className="flex shrink-0 items-end justify-between gap-6">
-            <div className="space-y-2">
-              <span className="block h-2.5 w-24 rounded-full bg-white/20" />
-              <span className="block h-7 w-40 rounded-md bg-white/12" />
+        <div className="flex min-h-0 min-w-0 flex-col gap-4">
+          <div className="flex min-w-0 items-end justify-between gap-3 sm:gap-6">
+            <div className="min-w-0 flex-1 space-y-2">
+              <span className="block h-2.5 w-2/5 max-w-24 rounded-full bg-white/20" />
+              <span className="block h-7 w-4/5 max-w-40 rounded-md bg-white/12" />
             </div>
-            <span className="h-8 w-24 rounded-full bg-white/10" />
+            <span className="h-8 w-16 shrink-0 rounded-full bg-white/10 sm:w-24" />
           </div>
           {variant === "ops" ? (
             <div className="grid min-h-0 flex-1 grid-cols-3 gap-2">

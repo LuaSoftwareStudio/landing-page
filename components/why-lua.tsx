@@ -25,9 +25,9 @@ export function WhyLua() {
         <h2 id="por-que-lua-title" className="section-title mt-3 max-w-3xl text-ink">
           Não entregamos apenas código. Construímos produtos.
         </h2>
-        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:gap-x-16 lg:gap-y-12">
+        <div className="mt-12 grid min-w-0 gap-10 sm:grid-cols-2 lg:gap-x-16 lg:gap-y-12">
           {reasons.map((reason, index) => (
-            <article key={reason.title} className="max-w-md">
+            <article key={reason.title} className="min-w-0 max-w-md">
               <p className="text-xs font-medium tracking-[0.18em] text-label">
                 0{index + 1}
               </p>

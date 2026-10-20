@@ -11,11 +11,11 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-ink/8 bg-bg-white">
-      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-5 py-12 sm:px-8 lg:px-16 lg:py-14">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mx-auto flex w-full min-w-0 max-w-7xl flex-col gap-10 px-5 pt-12 pb-40 sm:px-8 lg:px-16 lg:pt-14 lg:pb-40">
+        <div className="flex min-w-0 flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <SiteLogo variant="on-light" size="header" />
 
-          <nav aria-label="Rodapé" className="flex flex-wrap gap-x-6 gap-y-2 translate-x-[30px]">
+          <nav aria-label="Rodapé" className="flex max-w-full flex-wrap gap-x-6 gap-y-2">
             {footerNav.map((item) => (
               <a
                 key={item.href}
@@ -27,13 +27,13 @@ export function SiteFooter() {
             ))}
           </nav>
 
-          <div className="flex flex-col">
+          <div className="flex min-w-0 flex-col">
             <a
               href={`mailto:${site.email}`}
-              className="inline-flex min-h-11 items-center gap-2.5 text-sm text-ink-soft underline-offset-4 transition-opacity duration-200 hover:text-ink hover:underline"
+              className="inline-flex min-h-11 max-w-full items-center gap-2.5 text-sm text-ink-soft underline-offset-4 transition-opacity duration-200 hover:text-ink hover:underline"
             >
-              <Envelope size={18} weight="regular" aria-hidden="true" />
-              {site.email}
+              <Envelope size={18} weight="regular" aria-hidden="true" className="shrink-0" />
+              <span className="min-w-0 break-all">{site.email}</span>
             </a>
             <a
               href={site.instagram.href}

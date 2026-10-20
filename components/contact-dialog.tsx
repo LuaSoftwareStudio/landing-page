@@ -57,7 +57,7 @@ export function ContactProvider({ children }: { children: ReactNode }) {
       <dialog
         ref={dialogRef}
         aria-labelledby={titleId}
-        className="m-auto max-h-[min(90dvh,40rem)] w-[min(100%-2rem,32rem)] overflow-y-auto rounded-[28px] bg-bg-white p-0 text-ink shadow-xl backdrop:bg-black/55"
+        className="m-auto box-border max-h-[min(90dvh,40rem)] w-[min(32rem,calc(100dvw-1.5rem))] max-w-[calc(100dvw-1.5rem)] overflow-y-auto rounded-[28px] bg-bg-white p-0 text-ink shadow-xl backdrop:bg-black/55"
         onClick={(event) => {
           if (event.target === event.currentTarget) {
             closeContact();
@@ -65,8 +65,8 @@ export function ContactProvider({ children }: { children: ReactNode }) {
         }}
       >
         <div className="px-5 py-6 sm:px-7 sm:py-8">
-          <div className="flex items-start justify-between gap-4">
-            <div>
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
               <h2 id={titleId} className="text-2xl font-medium tracking-[-0.03em]">
                 O que você quer construir?
               </h2>
